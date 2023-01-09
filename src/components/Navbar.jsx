@@ -7,6 +7,7 @@ import { TiPencil } from "react-icons/ti";
 import { login, logout } from "../api/firebase";
 import { onUserStateChange } from "./../api/firebase";
 import User from "./User";
+import Button from "./Button";
 
 export default function Navbar() {
   const [user, setUser] = useState();
@@ -37,9 +38,9 @@ export default function Navbar() {
         )}
         {user && <User user={user} />}
         {!user ? (
-          <button onClick={login}>Login</button>
+          <Button text={"Login"} onClick={login} />
         ) : (
-          <button onClick={logout}>Logout</button>
+          <Button text={"Logout"} onClick={logout} />
         )}
       </nav>
     </header>
