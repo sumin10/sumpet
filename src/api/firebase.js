@@ -6,6 +6,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+import { getDatabase, ref, get } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -17,6 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
+const database = getDatabase(app);
 
 // 로그인
 export function login() {
@@ -30,7 +32,20 @@ export function logout() {
 
 // 유저 상태값 변경
 export function onUserStateChange(callback) {
-  onAuthStateChanged(auth, (user) => {
-    callback(user);
+  onAuthStateChanged(auth, async (user) => {
+    const updateUser = user ? await adminUser(user) : null;
+    callback(updateUser);
+  });
+}
+
+// 어드민 권한 유저
+async function adminUser(user) {
+  return get(ref(database, "admins")).then((snapshot) => {
+    if (snapshot.exists()) {
+      const admins = snapshot.val();
+      const isAdmin = admins.includes(user.uid);
+      return { ...user, isAdmin };
+    }
+    return user;
   });
 }

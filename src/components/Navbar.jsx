@@ -30,9 +30,11 @@ export default function Navbar() {
         <Link to="/carts" className="text-2xl">
           <BsCart4 />
         </Link>
-        <Link to="/products/add" className="text-2xl">
-          <TiPencil />
-        </Link>
+        {user && user.isAdmin && (
+          <Link to="/products/add" className="text-2xl">
+            <TiPencil />
+          </Link>
+        )}
         {user && <User user={user} />}
         {!user ? (
           <button onClick={login}>Login</button>
