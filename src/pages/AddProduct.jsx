@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { uploadImage } from "../api/uploader";
 import Button from "./../components/Button";
 
 export default function AddProduct() {
@@ -15,6 +16,7 @@ export default function AddProduct() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    uploadImage(file).then((url) => {});
   };
 
   return (
