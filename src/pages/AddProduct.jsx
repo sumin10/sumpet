@@ -33,11 +33,17 @@ export default function AddProduct() {
   };
 
   return (
-    <section>
-      <h3>새로운 상품 등록</h3>
-      {complete && <p>🐶 {complete}</p>}
-      {file && <img src={URL.createObjectURL(file)} alt="file" />}
-      <form onSubmit={handleSubmit}>
+    <section className="w-full text-center">
+      <h3 className="text-2xl font-semibold my-3.5 ">새로운 상품 등록</h3>
+      {complete && <p className="mb-2">🐶 {complete}</p>}
+      {file && (
+        <img
+          className="w-1/4 mx-auto mb-3"
+          src={URL.createObjectURL(file)}
+          alt="file"
+        />
+      )}
+      <form className="flex flex-col px-12 mb-20" onSubmit={handleSubmit}>
         <input
           type="file"
           name="file"
