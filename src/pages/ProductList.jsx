@@ -1,5 +1,6 @@
 import React from "react";
+import Products from "./../components/Products";
 
 export default function ProductList() {
-  return <div>ProductList</div>;
+  return <Products />;
 }

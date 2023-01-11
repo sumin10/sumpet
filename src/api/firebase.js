@@ -62,3 +62,13 @@ export async function addProduct(product, image) {
     option: product.option.split(","),
   });
 }
+
+// 상품 읽어오기
+export async function getProducts() {
+  return get(ref(database, "products")).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    }
+    return [];
+  });
+}
