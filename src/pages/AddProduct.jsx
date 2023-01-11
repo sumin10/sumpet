@@ -6,6 +6,8 @@ import Button from "./../components/Button";
 export default function AddProduct() {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState();
+  const [upload, setUpload] = useState(false);
+  const [complete, setComplete] = useState();
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -17,13 +19,23 @@ export default function AddProduct() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    setUpload(true);
     uploadImage(file).then((url) => {
-      addProduct(product, url);
+      addProduct(product, url)
+        .then(() => {
+          setComplete("상품 등록이 완료되었습니다.");
+          setTimeout(() => {
+            setComplete(null);
+          }, 4000);
+        })
+        .finally(() => setUpload(false));
     });
   };
 
   return (
     <section>
+      <h3>새로운 상품 등록</h3>
+      {complete && <p>🐶 {complete}</p>}
       {file && <img src={URL.createObjectURL(file)} alt="file" />}
       <form onSubmit={handleSubmit}>
         <input
@@ -73,7 +85,7 @@ export default function AddProduct() {
           required={true}
           onChange={handleChange}
         />
-        <Button text={"상품 등록하기"} />
+        <Button text={upload ? "업로드중..." : "상품 등록하기"} />
       </form>
     </section>
   );
