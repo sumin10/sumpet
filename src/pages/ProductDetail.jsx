@@ -30,7 +30,12 @@ export default function ProductDetail() {
               option.map((option, id) => <option key={id}>{option}</option>)}
           </select>
         </div>
-        <Button text="장바구니 추가" />
+        <div className="flex">
+          <div className="mr-3">
+            <Button text="구매하기" />
+          </div>
+          <Button text="장바구니 추가" />
+        </div>
       </div>
     </section>
   );
