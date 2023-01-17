@@ -17,15 +17,15 @@ export default function Navbar() {
         <h1>SumPet</h1>
       </Link>
       <nav className="flex items-center gap-5 font-semibold">
-        <Link to="/products" className="text-2xl">
-          <CgList />
+        <Link to="/products">
+          <CgList className="text-2xl" />
         </Link>
         <Link to="/carts">
           <CartStatus />
         </Link>
         {user && user.isAdmin && (
-          <Link to="/products/add" className="text-2xl">
-            <TiPencil />
+          <Link to="/products/add">
+            <TiPencil className="text-2xl" />
           </Link>
         )}
         {user && <User user={user} />}
