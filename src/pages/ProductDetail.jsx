@@ -5,9 +5,7 @@ import Button from "./../components/Button";
 import { useUserContext } from "../context/UserContext";
 
 export default function ProductDetail() {
-  const {
-    user: { uid },
-  } = useUserContext();
+  const { uid } = useUserContext();
   const {
     state: {
       product: { image, title, category, price, description, option, id },
