@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MdPets } from "react-icons/md";
 import { CgList } from "react-icons/cg";
-import { BsCart4 } from "react-icons/bs";
 import { TiPencil } from "react-icons/ti";
 import User from "./User";
 import Button from "./Button";
 import { useUserContext } from "../context/UserContext";
+import CartStatus from "./CartStatus";
 
 export default function Navbar() {
   const { user, login, logout } = useUserContext();
@@ -20,8 +20,8 @@ export default function Navbar() {
         <Link to="/products" className="text-2xl">
           <CgList />
         </Link>
-        <Link to="/carts" className="text-2xl">
-          <BsCart4 />
+        <Link to="/carts">
+          <CartStatus />
         </Link>
         {user && user.isAdmin && (
           <Link to="/products/add" className="text-2xl">
