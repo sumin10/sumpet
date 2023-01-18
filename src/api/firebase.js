@@ -7,7 +7,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getDatabase, ref, get, set } from "firebase/database";
+import { getDatabase, ref, get, set, remove } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -84,4 +84,9 @@ export async function getCart(userId) {
 // 장바구니 추가 및 업데이트
 export async function addOrUpdateCart(userId, product) {
   return set(ref(database, `carts/${userId}/${product.id}`), product);
+}
+
+// 장바구니 삭제
+export async function removeCart(userId, productId) {
+  return remove(ref(database), `carts/${userId}/${productId}`);
 }
