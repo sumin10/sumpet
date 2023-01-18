@@ -34,7 +34,7 @@ export default function AddProduct() {
 
   return (
     <section className="w-full text-center">
-      <h3 className="text-2xl font-semibold my-3.5 ">새로운 상품 등록</h3>
+      <h3 className="text-2xl font-semibold pt-8 pb-4 ">새로운 상품 등록</h3>
       {complete && <p className="mb-2">🐶 {complete}</p>}
       {file && (
         <img
@@ -43,7 +43,7 @@ export default function AddProduct() {
           alt="file"
         />
       )}
-      <form className="flex flex-col px-12 mb-20" onSubmit={handleSubmit}>
+      <form className="flex flex-col px-12" onSubmit={handleSubmit}>
         <input
           type="file"
           name="file"
