@@ -88,5 +88,5 @@ export async function addOrUpdateCart(userId, product) {
 
 // 장바구니 삭제
 export async function removeCart(userId, productId) {
-  return remove(ref(database), `carts/${userId}/${productId}`);
+  return remove(ref(database, `carts/${userId}/${productId}`));
 }
