@@ -33,17 +33,20 @@ export default function AddProduct() {
   };
 
   return (
-    <section className="w-full text-center">
-      <h3 className="text-2xl font-semibold pt-8 pb-4 ">새로운 상품 등록</h3>
+    <section className="p-8 text-center">
+      <h3 className="text-2xl font-bold pb-4 ">새로운 상품 등록</h3>
       {complete && <p className="mb-2">🐶 {complete}</p>}
       {file && (
         <img
-          className="w-1/4 mx-auto mb-3"
+          className="w-1/3 mx-auto mb-3"
           src={URL.createObjectURL(file)}
           alt="file"
         />
       )}
-      <form className="flex flex-col px-12" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col xl:flex-row px-16 xl:px-0"
+        onSubmit={handleSubmit}
+      >
         <input
           type="file"
           name="file"
