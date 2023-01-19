@@ -8,7 +8,7 @@ export default function ProductCard({
   const navigate = useNavigate();
   return (
     <li
-      className="cursor-pointer pt-10 hover:scale-105"
+      className="cursor-pointer pt-8 hover:scale-105"
       onClick={() => {
         navigate(`/products/${id}`, { state: { product } });
       }}
