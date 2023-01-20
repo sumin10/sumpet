@@ -19,17 +19,17 @@ export default function ProductDetail() {
   };
 
   return (
-    <section className="flex flex-col md:flex-row p-4 ">
+    <section className="flex flex-col md:flex-row p-8">
       <img className="w-full px-4 basis-7/12" src={image} alt={title} />
       <div className="w-full p-4 basis-5/12 flex flex-col ">
         <p className="text-gray-500">{category}</p>
-        <h3 className="text-2xl font-semibold pb-2">{title}</h3>
-        <p className="text-xl font-semibold pb-2">{price}원</p>
-        <p className="text-gray-600 mb-10">{description}</p>
+        <h3 className="text-2xl font-semibold">{title}</h3>
+        <p className="text-xl font-semibold py-2">{price}원</p>
+        <p className="text-gray-600 pb-8">{description}</p>
         <div className="flex items-center">
-          <p className="text-brand font-bold">옵션:</p>
+          <label className="text-brand font-bold">옵션:</label>
           <select
-            className="p-2 m-4 px-10 border-2 border-brand outline-none"
+            className="p-2 m-4 border-2 border-brand outline-none"
             onChange={handleSelect}
             value={select}
           >
