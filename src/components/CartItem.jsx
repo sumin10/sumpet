@@ -18,17 +18,28 @@ export default function CartItem({
   const handleDelete = () => removeCart(uid, id);
 
   return (
-    <li>
-      <img src={image} alt={title} />
-      <div>
-        <p>{title}</p>
-        <p>{option}</p>
-        <p>{price}</p>
+    <li className="flex justify-between mb-2 items-center">
+      <img className="w-40 md:w-52 rounded-lg" src={image} alt={title} />
+      <div className="flex flex-1 justify-between ml-4">
         <div>
-          <FiMinus onClick={handleMinus} />
+          <p className="text-lg font-semibold">{title}</p>
+          <p className="text-xl font-semibold text-brand">{option}</p>
+          <p>{price}원</p>
+        </div>
+        <div className="text-xl flex items-center">
+          <FiMinus
+            className="transition-all cursor-pointer mx-1 hover:text-brand hover:scale-110"
+            onClick={handleMinus}
+          />
           <span>{quantity}</span>
-          <FiPlus onClick={handlePlus} />
-          <RiDeleteBinLine onClick={handleDelete} />
+          <FiPlus
+            className="transition-all cursor-pointer mx-1 hover:text-brand hover:scale-110"
+            onClick={handlePlus}
+          />
+          <RiDeleteBinLine
+            className="transition-all cursor-pointer hover:scale-110"
+            onClick={handleDelete}
+          />
         </div>
       </div>
     </li>
