@@ -1,17 +1,16 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import { getCart } from "../api/firebase";
-import { useUserContext } from "../context/UserContext";
 import CartItem from "./../components/CartItem";
 import PriceCard from "./../components/PriceCard";
 import { FiPlus } from "react-icons/fi";
 import { TbEqual } from "react-icons/tb";
 import Button from "./../components/Button";
 import { useNavigate } from "react-router-dom";
+import useCart from "./../hooks/useCart";
 
 export default function CartList() {
-  const { uid } = useUserContext();
-  const { data: products } = useQuery(["carts"], () => getCart(uid));
+  const {
+    cartQuery: { data: products },
+  } = useCart();
   const hasProducts = products && products.length > 0;
   const totalPrice =
     products &&
@@ -36,7 +35,7 @@ export default function CartList() {
           <ul className="p-4 px-8">
             {products &&
               products.map((product) => (
-                <CartItem key={product.id} product={product} uid={uid} />
+                <CartItem key={product.id} product={product} />
               ))}
           </ul>
           <div className="flex justify-between items-center my-6 px-2 md:px-8 lg:px-16">

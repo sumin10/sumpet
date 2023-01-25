@@ -1,21 +1,21 @@
 import React from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { addOrUpdateCart, removeCart } from "../api/firebase";
+import useCart from "./../hooks/useCart";
 
 export default function CartItem({
   product,
-  uid,
   product: { image, title, price, option, quantity, id },
 }) {
+  const { addOrUpdateItem, removeItem } = useCart();
   const handleMinus = () => {
     if (quantity < 2) return;
-    addOrUpdateCart(uid, { ...product, quantity: quantity - 1 });
+    addOrUpdateItem.mutate({ ...product, quantity: quantity - 1 });
   };
   const handlePlus = () =>
-    addOrUpdateCart(uid, { ...product, quantity: quantity + 1 });
+    addOrUpdateItem.mutate({ ...product, quantity: quantity + 1 });
 
-  const handleDelete = () => removeCart(uid, id);
+  const handleDelete = () => removeItem.mutate(id);
 
   return (
     <li className="flex justify-between mb-2 items-center">

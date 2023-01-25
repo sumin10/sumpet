@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { addOrUpdateCart } from "../api/firebase";
 import Button from "./../components/Button";
-import { useUserContext } from "../context/UserContext";
+import useCart from "./../hooks/useCart";
 
 export default function ProductDetail() {
-  const { uid } = useUserContext();
+  const { addOrUpdateItem } = useCart();
   const {
     state: {
       product: { image, title, category, price, description, option, id },
@@ -15,7 +14,7 @@ export default function ProductDetail() {
   const handleSelect = (e) => setSelect(e.target.value);
   const handleClick = (e) => {
     const product = { image, title, price, id, option: select, quantity: 1 };
-    addOrUpdateCart(uid, product);
+    addOrUpdateItem.mutate(product);
   };
 
   return (
