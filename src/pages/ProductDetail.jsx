@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Button from "./../components/Button";
 import useCart from "./../hooks/useCart";
 
@@ -12,12 +12,10 @@ export default function ProductDetail() {
   } = useLocation();
   const [select, setSelect] = useState(option[0]);
   const handleSelect = (e) => setSelect(e.target.value);
-  const handleClickAdd = (e) => {
+  const handleClick = (e) => {
     const product = { image, title, price, id, option: select, quantity: 1 };
     addOrUpdateItem.mutate(product);
   };
-  const navigate = useNavigate();
-  const handleClickBuy = () => navigate(`/buy`);
 
   return (
     <section className="flex flex-col md:flex-row p-8">
@@ -40,9 +38,9 @@ export default function ProductDetail() {
         </div>
         <div className="flex">
           <div className="mr-3">
-            <Button text="구매하기" onClick={handleClickBuy} />
+            <Button text="구매하기" />
           </div>
-          <Button text="장바구니 추가" onClick={handleClickAdd} />
+          <Button text="장바구니 추가" onClick={handleClick} />
         </div>
       </div>
     </section>

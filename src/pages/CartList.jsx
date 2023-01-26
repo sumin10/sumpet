@@ -19,8 +19,7 @@ export default function CartList() {
       0
     );
   const navigate = useNavigate();
-  const handleClickProducts = () => navigate(`/products`);
-  const handleClickBuy = () => navigate(`/buy`);
+  const handleClick = () => navigate(`/products`);
 
   return (
     <section className="p-8">
@@ -29,7 +28,7 @@ export default function CartList() {
         <div className="text-center">
           <p className="pt-4 pb-1 text-xl">🐶 장바구니에 담긴 상품이 없어요.</p>
           <p className="pb-4">원하는 상품을 담아보세요!</p>
-          <Button text="상품 보러 가기" onClick={handleClickProducts} />
+          <Button text="상품 보러 가기" onClick={handleClick} />
         </div>
       ) : (
         <>
@@ -45,10 +44,7 @@ export default function CartList() {
             <PriceCard text="배송비" price={3000} />
             <TbEqual className="shrink-0" />
             <PriceCard text="총 금액" price={totalPrice + 3000} />
-            <button
-              className="bg-brand text-white md:text-lg py-12 px-7 rounded-xl hover:brightness-105"
-              onClick={handleClickBuy}
-            >
+            <button className="bg-brand text-white md:text-lg py-12 px-7 rounded-xl hover:brightness-105">
               주문하기
             </button>
           </div>

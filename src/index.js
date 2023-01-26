@@ -11,7 +11,6 @@ import AddProduct from "./pages/AddProduct";
 import ProductDetail from "./pages/ProductDetail";
 import CartList from "./pages/CartList";
 import ProtectedRoute from "./pages/ProtectedRoute";
-import BuyProducts from "./pages/BuyProducts";
 
 const router = createBrowserRouter([
   {
@@ -43,10 +42,6 @@ const router = createBrowserRouter([
       {
         path: "/carts",
         element: <CartList />,
-      },
-      {
-        path: "/buy",
-        element: <BuyProducts />,
       },
     ],
   },
