@@ -5,20 +5,20 @@ import { useUserContext } from "../context/UserContext";
 export default function useCart() {
   const { uid } = useUserContext();
   const queryClient = useQueryClient();
-  const cartQuery = useQuery(["carts", uid], () => getCart(uid));
+  const cartQuery = useQuery(["carts"], () => getCart(uid));
 
   const addOrUpdateItem = useMutation(
     (product) => addOrUpdateCart(uid, product),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(["carts", uid]);
+        queryClient.invalidateQueries(["carts"]);
       },
     }
   );
 
   const removeItem = useMutation((id) => removeCart(uid, id), {
     onSuccess: () => {
-      queryClient.invalidateQueries(["carts", uid]);
+      queryClient.invalidateQueries(["carts"]);
     },
   });
 
